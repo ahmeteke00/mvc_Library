@@ -1,0 +1,96 @@
+﻿@using MvcStok.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLKATEGORILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div style="background-color:white;">
+    <div style="margin-left:10px; margin-right:10px; padding-top:15px; margin-top:200px;">
+
+
+        <table class="=table table-bordered" style="width:1120px;">
+            <tr>
+                <th>KATEGORİ ID</th>
+                <th>KATEGORİ ADI</th>
+                <th>SİL</th>
+                <th>GÜNCELLE</th>
+
+            </tr>
+            <tbody>
+                @foreach (var ktgr in Model)
+                {
+                    <tr>
+                        <th>@ktgr.KATEGORIID</th>
+                        <td>@ktgr.KATEGORIAD</td>
+                        <td>
+                            <a href="/KATEGORI/SIL/@ktgr.KATEGORIID" class="btn btn-danger">
+                                SİL
+                                <style>
+                                    .btn-danger {
+                                        background-color: orangered;
+                                        border-radius: 75px;
+                                        font-weight: bold;
+                                        width: 75px;
+                                    }
+
+                                        .btn-danger:hover {
+                                            border-color: white;
+                                            color: orangered;
+                                            background-color: white;
+                                            transition: 0.3s;
+                                        }
+                                </style>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/KATEGORI/KategoriGetir/@ktgr.KATEGORIID" class="btn btn-success">
+                                GÜNCELLE
+                                <style>
+                                    .btn-success {
+                                        color:white;
+                                        background-color:green;
+                                        border-color:green;
+                                        width: 130px;
+                                        border-radius: 75px;
+                                        font-weight: bold;
+                                    }
+
+                                        .btn-success:hover {
+                                            border-color: white;
+                                            color: green;
+                                            background-color: white;
+                                            transition: 0.3s;
+                                        }
+                                </style>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+        <a href="/KATEGORI/YeniKategori/" class="btn btn-primary">
+            YENİ KATEGORİ EKLE
+            <style>
+                .btn-primary {
+                    margin-bottom:10px;
+                    border-radius: 75px;
+                    width: 200px;
+                    height: 37px;
+                    font-weight: bold;
+                    background-color: deepskyblue;
+                    border-color: deepskyblue;
+                }
+
+                    .btn-primary:hover {
+                        background-color: white;
+                        border-color: white;
+                        transition: 0.3s;
+                        color: deepskyblue;
+                    }
+            </style>
+        </a>
+    </div>
+</div>

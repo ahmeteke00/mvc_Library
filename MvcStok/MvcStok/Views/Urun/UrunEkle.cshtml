@@ -1,0 +1,54 @@
+﻿@model MvcStok.Models.Entity.TBLURUNLER
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="background-color:white; margin-top:200px; width:1160px;">
+    <div style="width:1140px; margin-bottom:10px; margin-left:10px; padding-top:10px;">
+        <form method="post" class="form-group">
+            <div>
+                <label>Ürün Adı</label>
+                <input type="text" class="form-control" name="URUNAD" required="" />
+            </div>
+            <div>
+                <label>Marka</label>
+                <input type="text" class="form-control" name="MARKA" placeholder="Lütfen Marka Giriniz" required="" />
+            </div>
+            <div>
+                <label>Kategiri Seçiniz</label>
+                @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+            </div>
+            <div>
+                <label>Ürün Fiyatı</label>
+                <input type="text" class="form-control" name="FIYAT" />
+            </div>
+            <div>
+                <label>Stok Adet</label>
+                <input type="text" class="form-control" name="STOK" />
+            </div>
+            <div style="margin-top:15px;">
+                <button class="btn btn-info">
+                    Ürün Ekle
+                    <style>
+                        .btn-info {
+                            margin-bottom:10px;
+                            border-radius: 75px;
+                            border-color: dodgerblue;
+                            background-color: dodgerblue;
+                            color: white;
+                            font-weight: bold;
+                        }
+
+                            .btn-info:hover {
+                                border-color: white;
+                                color: dodgerblue;
+                                background-color: white;
+                                transition: 0.3s;
+                            }
+                    </style>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
